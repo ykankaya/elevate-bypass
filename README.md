@@ -14,7 +14,7 @@ administrator提权至system的前三种提权方式由于都要与令牌/新起
 
 系统服务是通过注册服务（服务是system权限），而计划任务通过写入system权限的计划任务( https://github.com/H4de5-7/schtask-bypass )。
 
-系统服务提权cs中也实现了，即elevate里面的svc-exe，不过上传的路径于exe本身均不免杀。
+系统服务提权cs中也实现了，即elevate里面的svc-exe，不过上传的路径与exe本身均不免杀。
 
 这里参考 https://github.com/pandolia/easy-service 写了个极其简单的demo。
 
