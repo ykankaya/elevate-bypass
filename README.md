@@ -10,7 +10,7 @@ windows平台下通用（不包含内核漏洞、特定条件的提权）的提�
 
 * administrator提权至system：getsystem、父进程欺骗( https://github.com/Yihsiwei/admin2system )、偷令牌、系统服务、计划任务
 
-administrator提权至system的前三种提权方式由于都要与令牌/新起高权限进程相关，会被360严格监控（推测360对进程初始的权限进行了记录，后续子进程权限如果高于记录值的话就会报出来）。而系统服务和计划任务并没有起子进程。
+administrator提权至system的前三种提权方式由于都要与令牌/新起高权限进程相关，会被360严格监控（推测360对进程初始的权限进行了记录，后续子进程权限如果高于记录值的话就会报出来）。而系统服务和计划任务并没有起子进程因此不会被监控。
 
 系统服务是通过注册服务（服务是system权限），而计划任务通过写入system权限的计划任务( https://github.com/H4de5-7/schtask-bypass )。
 
