@@ -1,14 +1,16 @@
-# administrator->system系统服务免杀提权小工具
+# bypassuac、administrator->system系统服务免杀提权小工具
 
-系统服务免杀提权的小工具，可过Defender、360、卡巴等
+bypassuac与administrator->system系统服务免杀提权的小工具，可过Defender、360、卡巴等
 
 **请勿使用于任何非法用途，由此产生的后果自行承担。**
 
 windows平台下通用（不包含内核漏洞、特定条件的提权）的提权手段：
 
-* 提权至administrator：bypassuac，可用COM组件提权( https://github.com/0xlane/BypassUAC )，编译成exe后改一改直接执行或者用execute-assembly执行均可免杀Defender、360、卡巴等。
+* 提权至administrator：bypassuac，可用COM组件提权( https://github.com/0xlane/BypassUAC )，编译成exe后改一改直接执行或者用execute-assembly执行均可免杀Defender、360等。
 
 * administrator提权至system：getsystem、父进程欺骗( https://github.com/Yihsiwei/admin2system )、偷令牌、系统服务、计划任务
+
+## administrator->system系统服务提权
 
 administrator提权至system的前三种提权方式由于都要与令牌/新起高权限进程相关，会被360严格监控（推测360对进程初始的权限进行了记录，后续子进程权限如果高于记录值的话就会报出来）。而系统服务和计划任务并没有起子进程因此不会被监控。
 
@@ -28,7 +30,7 @@ administrator提权至system的前三种提权方式由于都要与令牌/新起
 
 不过系统服务提权有一个弊端就是需要落地service.exe，不像计划任务可以做成反射型dll来不落地执行。
 
-## 使用的方法
+### 使用的方法
 
 1、编译exe（名称最好不要和常规服务名字很接近，要不360会误以为在修改系统原本的服务），p = "flag"中的flag可以替换成任意的内容（为了混淆下）
 
@@ -47,6 +49,22 @@ sc stop Service名称
 sc delete Service名称
 
 4、删除注册系统服务的exe
+
+## bypassuac提权
+
+COM组件提权：对 https://github.com/0xlane/BypassUAC 进行了一点小的修改进而武器化利用
+
+### 使用的方法
+
+1、编译exe
+
+2、执行格式为
+
+bypassuac.exe 需要提权的exe的路径 exe的相关参数
+
+也可以execute-assembly不落地执行
+
+
 
 
 
